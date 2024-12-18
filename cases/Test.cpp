@@ -1,8 +1,7 @@
 #include <cstdlib>
 #include <cstdio>
 
-int main()
+int main(int argc, char **argv)
 {
-    char *command = getenv("HOME");
-    system(command);
+    system(argv[1]);
 }
