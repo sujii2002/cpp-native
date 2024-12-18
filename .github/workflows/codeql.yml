@@ -79,12 +79,12 @@ jobs:
     - if: matrix.build-mode == 'manual'
       shell: bash
       run: |
-        gcc case01.cpp -o case01.app
-        gcc case02.cpp -o case02.app
-        gcc case03.cpp -o case03.app
-        gcc case04.cpp -o case04.app
-        gcc case05.cpp -o case05.app
-        gcc cases.cpp -o cases.app
+        gcc cases/case01.cpp -o cases/case01.app
+        gcc cases/case02.cpp -o cases/case02.app
+        gcc cases/case03.cpp -o cases/case03.app
+        gcc cases/case04.cpp -o cases/case04.app
+        gcc cases/case05.cpp -o cases/case05.app
+        gcc cases/cases.cpp -o cases/cases.app
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
