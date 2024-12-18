@@ -1,5 +1,4 @@
 #include<iostream>
-#include<windows.h>
 
 LPSTR processName(const char* name);
 void GetOurComputer(char* buffer, DWORD size);
