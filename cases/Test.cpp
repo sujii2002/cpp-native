@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <xercesc/util/PlatformUtils.hpp>
-#include <xercesc/dom/DOM.hpp>
-#include <xercesc/parsers/XercesDOMParser.hpp>
-#include <iostream>
 using namespace xercesc;
 // A simple implementation of encodeShellString
 // Escapes special characters for shell commands.
+int is_morning_bad() {
+    const time_t now_seconds = time(NULL);
+    struct tm *now = gmtime(&now_seconds);
+    return (now->tm_hour < 12);
+}
 void encodeShellString(char *dest, size_t destSize, const char *src) {
     size_t destIndex = 0;
     for (size_t i = 0; src[i] != '\0' && destIndex < destSize - 1; i++) {
@@ -82,26 +83,7 @@ int main(int argc, char **argv) {
         system(command2);
     }
 
-    XMLPlatformUtils::Initialize();  // Initialize the XML toolkit
-
-        // Create a XercesDOMParser object
-        XercesDOMParser* parser = new XercesDOMParser();
-
-        // Parse the data (replace "data.xml" with your actual XML file path or data)
-        parser->parse("data.xml");
-
-        // Check if parsing was successful
-        if (parser->getErrorCount() == 0) {
-            std::cout << "Parsing was successful." << std::endl;
-        } else {
-            std::cout << "There were errors during parsing." << std::endl;
-        }
-
-        // Clean up
-        delete parser;
-
-        // Terminate Xerces-C++
-        XMLPlatformUtils::Terminate();
+   
 
     return 0;
 }
