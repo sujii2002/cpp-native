@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-using namespace xercesc;
+#include <time.h>
 // A simple implementation of encodeShellString
 // Escapes special characters for shell commands.
 int is_morning_bad() {
@@ -82,6 +82,14 @@ int main(int argc, char **argv) {
         printf("Executing (secure): %s\n", command2);
         system(command2);
     }
+    char *userAndFile = argv[2];
+  
+  {
+    char fileBuffer[PATH_MAX];
+    snprintf(fileBuffer, sizeof(fileBuffer), "/home/%s", userAndFile);
+    // BAD: a string from the user is used in a filename
+    fopen(fileBuffer, "wb+");
+  }
 
    
 
