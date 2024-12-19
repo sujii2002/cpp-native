@@ -52,18 +52,18 @@ int main(int argc, char **argv) {
     
         // BAD: a string from the user is injected directly into
         // a command line.
-        char command2[1000] = username;
+        char command2[1000] = userName;
         //sprintf(command1, "userinfo -v \"%s\"", userName);
        // printf("Executing (insecure): %s\n", command1);
         system(command2);
     
         // BAD: a string from the user is injected directly into
         // a command line.
-        char command3[1000] = username;
+        char command3[1000] = userName;
         //sprintf(command1, "userinfo -v \"%s\"", userName);
        // printf("Executing (insecure): %s\n", command1);
         char command4[1000]={0};
-        command4=command3;
+        strcpy(command4, command3);
         system(command4);
     
 
