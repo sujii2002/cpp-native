@@ -49,6 +49,22 @@ int main(int argc, char **argv) {
         printf("Executing (insecure): %s\n", command1);
         system(command1);
     }
+    
+    {    // BAD: a string from the user is injected directly into
+        // a command line.
+        char command2[1000] = username;
+        //sprintf(command1, "userinfo -v \"%s\"", userName);
+       // printf("Executing (insecure): %s\n", command1);
+        system(command2);
+    }
+    {    // BAD: a string from the user is injected directly into
+        // a command line.
+        char command3[1000] = username;
+        //sprintf(command1, "userinfo -v \"%s\"", userName);
+       // printf("Executing (insecure): %s\n", command1);
+        char command4[1000]=command3
+        system(command4);
+    }
 
     {
         // GOOD: the user string is encoded by a library routine.
