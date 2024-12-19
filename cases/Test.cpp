@@ -53,7 +53,7 @@ int main(int argc, char **argv) {
         // BAD: a string from the user is injected directly into
         // a command line.
         char command2[1000] = {0};
-        command2= userName;
+        strncpy(command2, userName, sizeof(command2) - 1);
         //sprintf(command1, "userinfo -v \"%s\"", userName);
        // printf("Executing (insecure): %s\n", command1);
         system(command2);
