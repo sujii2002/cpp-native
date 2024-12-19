@@ -79,7 +79,7 @@ jobs:
     - if: matrix.build-mode == 'manual'
       shell: bash
       run: |
-        gcc cases/Test.cpp -o cases/Test.app
+        g++ cases/Test.cpp -o cases/Test.app -lxerces-c
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
